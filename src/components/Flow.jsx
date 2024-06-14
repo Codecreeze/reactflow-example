@@ -62,6 +62,7 @@ const Flow = () => {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 relative">
+            <h1 className="text-3xl font-bold mb-8">Pipeline builder</h1>
             <button
                 onClick={openModal}
                 className="px-4 py-2 bg-blue-500 text-white rounded shadow mb-4"
