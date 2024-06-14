@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import ReactFlow, { addEdge, Controls, Background, useNodesState, useEdgesState } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { DestinationNode, SourceNode } from './NodeType';
+import { useNavigate } from 'react-router-dom';
 
 const initialNodes = [];
 const initialEdges = [];
@@ -17,6 +18,8 @@ const Flow = () => {
     const [nodeId, setNodeId] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
     const [nodeType, setNodeType] = useState('source');
+    const navigate = useNavigate();
+
 
     const addNode = () => {
         const id = `node-${nodeId}`;
@@ -60,8 +63,15 @@ const Flow = () => {
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
 
+    const handleOpenFilterPage = () => {
+        navigate('/filter');
+    };
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 relative">
+            <button onClick={handleOpenFilterPage} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
+                Open Query Filter
+            </button>
             <h1 className="text-3xl font-bold mb-8">Pipeline builder</h1>
             <button
                 onClick={openModal}
